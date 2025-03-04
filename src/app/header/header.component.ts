@@ -9,5 +9,17 @@ import { HomeComponent } from "../home/home.component";
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  starshipsActive: boolean = false;
+  homeActive: boolean = true;
+
+  showHome() {
+    this.homeActive = true;
+    this.starshipsActive = false;
+  }
+  
+  showStarships() {
+    this.starshipsActive = true;
+    this.homeActive = false;
+  }
 
 }
