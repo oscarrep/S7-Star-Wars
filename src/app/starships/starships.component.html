@@ -1,1 +1,9 @@
-<p>starships works!</p>
+<h1>starships</h1>
+<div>
+    @for(starship of starships; track starship){
+    <li>
+        <u>{{starship.name}}</u> <br>
+        {{starship.model}}
+    </li>
+    }
+</div>
