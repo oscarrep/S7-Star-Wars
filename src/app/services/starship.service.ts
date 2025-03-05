@@ -12,7 +12,7 @@ export class StarshipService {
 
   constructor(private http: HttpClient) { }
 
-  getStarships(): Observable<StarshipRes> {
+  getStarshipsList(): Observable<StarshipRes> {
     return this.http.get<StarshipRes>(this.shipsUrl);
   }
 

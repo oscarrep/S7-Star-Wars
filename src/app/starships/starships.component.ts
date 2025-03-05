@@ -13,15 +13,15 @@ export class StarshipsComponent implements OnInit {
 
   private starshipService = inject(StarshipService);
   starships: Starship[] = [];
-  starship: [] = [];
+  selectedShip: Starship | null = null;
   showDetails: boolean = false;
 
   constructor() { }
 
-  ngOnInit(): void { this.getStarships() }
+  ngOnInit(): void { this.showStarshipsList() }
 
-  getStarships(): void {
-    this.starshipService.getStarships().subscribe({
+  showStarshipsList(): void {
+    this.starshipService.getStarshipsList().subscribe({
       next: (response) => {
         this.starships = response.results.map((ship: any) => ({
           name: ship.name,
@@ -53,13 +53,14 @@ export class StarshipsComponent implements OnInit {
   showShip(url: string): void {
     this.starshipService.getShip(url).subscribe({
       next: (ship: any) => {
-        this.starship = ship;
-        console.log(this.starship);
+        this.selectedShip = ship;
+        console.log(this.selectedShip);
       },
       error: (error) => {
         console.error('Error getting starship:', error);
       },
     });
-    this.showDetails = true;
   }
+
+  
 }

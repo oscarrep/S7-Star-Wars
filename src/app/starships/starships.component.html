@@ -5,5 +5,5 @@
         <div>{{starship.model}}</div>
     </div>
     }
-    @if(showDetails){<app-starship-details/>}
+    @if(selectedShip){<app-starship-details [starship]="selectedShip"/>}
 </div>
