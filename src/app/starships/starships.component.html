@@ -1,8 +1,9 @@
 <div class="bg list-bg">
     @for(starship of starships; track starship){
-    <div class="text item">
-        <u>{{starship.name}}</u> <br>
-        {{starship.model}}
+    <div class="text item" (click)="showShip(starship.url)">
+        <div class="font-bold">{{starship.name}}</div>
+        <div>{{starship.model}}</div>
     </div>
     }
+    @if(showDetails){<app-starship-details/>}
 </div>

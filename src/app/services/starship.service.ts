@@ -10,7 +10,13 @@ export class StarshipService {
 
   private shipsUrl: string = 'https://swapi.dev/api/starships/';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getStarships():Observable<StarshipRes>{ return this.http.get<StarshipRes>(this.shipsUrl); }
+  getStarships(): Observable<StarshipRes> {
+    return this.http.get<StarshipRes>(this.shipsUrl);
+  }
+
+  getShip(url: string): Observable<any> {
+    return this.http.get(url);
+  }
 }
