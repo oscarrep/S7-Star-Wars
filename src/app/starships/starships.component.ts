@@ -1,22 +1,25 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StarshipService } from '../services/starship.service';
 import { Starship } from '../interfaces/starship';
 import { StarshipDetailsComponent } from "../starship-details/starship-details.component";
+import { StarshipImgComponent } from '../starship-img/starship-img.component';
 
 @Component({
   selector: 'app-starships',
-  imports: [StarshipDetailsComponent],
+  standalone: true,
+  imports: [StarshipDetailsComponent, StarshipImgComponent],
   templateUrl: './starships.component.html',
   styleUrl: './starships.component.scss'
 })
 export class StarshipsComponent implements OnInit {
 
-  private starshipService = inject(StarshipService);
+  //private starshipService = inject(StarshipService);
+  //private image = inject(StarshipImgComponent);
   starships: Starship[] = [];
   selectedShip: Starship | null = null;
   showDetails: boolean = false;
 
-  constructor() { }
+  constructor(public starshipService: StarshipService) { }
 
   ngOnInit(): void { this.showStarshipsList() }
 
@@ -55,7 +58,7 @@ export class StarshipsComponent implements OnInit {
       next: (ship: any) => {
         this.selectedShip = ship;
         console.log(this.selectedShip);
-       // console.log(this.starshipService.imgUrl);
+        //console.log(this.image.imgUrl);
       },
       error: (error) => {
         console.error('Error getting starship:', error);
@@ -63,5 +66,5 @@ export class StarshipsComponent implements OnInit {
     });
   }
 
-  
+
 }
