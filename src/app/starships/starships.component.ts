@@ -55,6 +55,7 @@ export class StarshipsComponent implements OnInit {
       next: (ship: any) => {
         this.selectedShip = ship;
         console.log(this.selectedShip);
+       // console.log(this.starshipService.imgUrl);
       },
       error: (error) => {
         console.error('Error getting starship:', error);
