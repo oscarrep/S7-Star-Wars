@@ -1,21 +1,23 @@
 <div class="text-gray-200 flex item flex-col">
     <div>
-        <div class="font-bold">{{starship?.name}}</div>
+        <div class="font-bold">{{starship.name}}</div>
     </div>
+    <app-starship-img [starshipId]="starshipId" [starship]="starship"/>
     <div class="flex flex-wrap">
-        <div class="w-1/2 p2">
-            <div>Model: {{starship?.model}}</div>
-            <div>Class: {{starship?.starship_class}}</div>
-            <div>Manufacturer: {{starship?.manufacturer}}</div>
-            <div>Cargo capacity: {{starship?.cargo_capacity}} kg</div>
-            <div>Crew: {{starship?.crew}}</div>
+        <div class="w-1/2 p-2">
+            <div>Model: {{starship.model}}</div>
+            <div>Class: {{starship.starship_class}}</div>
+            <div>Manufacturer: {{starship.manufacturer}}</div>
+            <div>Cargo capacity: {{starship.cargo_capacity}} kg</div>
+            <div>Crew: {{starship.crew}}</div>
         </div>
-        <div class="w-1/2 p2">
-            <div>Passengers: {{starship?.passengers}}</div>
-            <div>Cost: {{starship?.cost_in_credits}} credits</div>
-            <div>Length: {{starship?.length}}m</div>
-            <div>Atmosferic speed: {{starship?.max_atmosphering_speed}} km/h</div>
-            <div>Hyperdrive rating: {{starship?.hyperdrive_rating}}</div>
+        <div class="w-1/2 p-2">
+            <div>Passengers: {{starship.passengers}}</div>
+            <div>Cost: {{starship.cost_in_credits}} credits</div>
+            <div>Length: {{starship.length}}m</div>
+            <div>Atmosferic speed: {{starship.max_atmosphering_speed}} km/h</div>
+            <div>Hyperdrive rating: {{starship.hyperdrive_rating}}</div>
         </div>
+        <button class="bg-rose-700 text-white font-bold py-2 px-4 rounded mt-4" type="button" (click)="toggleDetails()"> BACK </button>
     </div>
 </div>

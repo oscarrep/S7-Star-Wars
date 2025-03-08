@@ -53,12 +53,13 @@ export class StarshipsComponent implements OnInit {
   splitUrl(url: string): string { return url.split('/').slice(-2, -1)[0]; }
 
   showShip(index: number): void {
-    if (index >= 0 && index < this.starships.length) this.selectedShip = this.starships[index];
-    else console.error('Invalid index', index);
+    if (index >= 0 && index < this.starships.length) {
+      this.selectedShip = this.starships[index];
+      this.showDetails = true;
+    } 
+    else console.error('Invalid index:', index);
   }
 
   getStarshipIndex(ship: Starship): number { return this.starships.findIndex(s => s.name === ship.name); }
-
-
 
 }
