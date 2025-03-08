@@ -16,4 +16,12 @@ export class StarshipService {
     return this.http.get<StarshipRes>(this.shipsUrl);
   }
 
+  getNextUrl(url: string): Observable<StarshipRes> {
+    return this.http.get<StarshipRes>(url);
+  }
+
+  getExpandedList(url: string): Observable<StarshipRes> {
+    return this.http.get<StarshipRes>(url);
+  }
+
 }

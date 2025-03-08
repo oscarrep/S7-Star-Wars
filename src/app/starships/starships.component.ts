@@ -13,8 +13,10 @@ import { StarshipImgComponent } from '../starship-img/starship-img.component';
 })
 export class StarshipsComponent implements OnInit {
   starships: Starship[] = [];
+  newStarships: Starship[] = [];
   selectedShip!: Starship;
   showDetails: boolean = false;
+  nextUrl: string | null = null;
 
   constructor(public starshipService: StarshipService) { }
 
@@ -42,6 +44,7 @@ export class StarshipsComponent implements OnInit {
           previous: ship.previous,
           url: ship.url,
         }));
+        this.nextUrl = response.next;
         console.log(this.starships);
       },
       error: (error) => {
@@ -56,10 +59,42 @@ export class StarshipsComponent implements OnInit {
     if (index >= 0 && index < this.starships.length) {
       this.selectedShip = this.starships[index];
       this.showDetails = true;
-    } 
+    }
     else console.error('Invalid index:', index);
   }
 
   getStarshipIndex(ship: Starship): number { return this.starships.findIndex(s => s.name === ship.name); }
 
+  expandList(): void {
+    console.log(this.nextUrl);
+    if (this.nextUrl) {
+      this.starshipService.getExpandedList(this.nextUrl).subscribe({
+        next: (response) => {
+          this.newStarships = response.results.map((ship: any) => ({
+            name: ship.name,
+            model: ship.model,
+            manufacturer: ship.manufacturer,
+            cost_in_credits: ship.cost_in_credits,
+            length: ship.length,
+            max_atmosphering_speed: ship.max_atmosphering_speed,
+            crew: ship.crew,
+            passengers: ship.passengers,
+            cargo_capacity: ship.cargo_capacity,
+            consumables: ship.consumables,
+            hyperdrive_rating: ship.hyperdrive_rating,
+            starship_class: ship.starship_class,
+            next: ship.next,
+            previous: ship.previous,
+            url: ship.url,
+          }));
+          this.starships = this.starships.concat(this.newStarships);
+          this.nextUrl = response.next;
+          console.log(this.starships);
+        },
+        error: (error) => {
+          console.error('Error getting ships:', error);
+        },
+      });
+    }
+  }
 }

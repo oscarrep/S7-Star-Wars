@@ -4,8 +4,11 @@
     <div class="text item" (click)="showShip(getStarshipIndex(starship))">
         <div class="font-bold">{{starship.name}}</div>
         <div>{{starship.model}}</div>
+        <div>{{starship.next}}</div>
     </div>
     }
+    <button class="bg-rose-700 text-white font-bold py-2 px-4 rounded mt-4" type="button" 
+    (click)="expandList()">Expand list</button>
     }
 
     @else if(selectedShip && showDetails){
