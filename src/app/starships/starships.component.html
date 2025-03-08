@@ -1,12 +1,14 @@
 <div class="bg list-bg">
-    @if(!selectedShip){
+
     @for(starship of starships; track starship){
-    <div class="text item" (click)="showShip(starship.url)">
+    <div class="text item" (click)="showShip(getStarshipIndex(starship))">
         <div class="font-bold">{{starship.name}}</div>
         <div>{{starship.model}}</div>
     </div>
-    }}
-    @else if(selectedShip){
+    }
+
+    @if(selectedShip){
     <app-starship-details [starship]="selectedShip" />
+    <app-starship-img [starshipId]="splitUrl(selectedShip.url)" [starship]="selectedShip"/>
     }
 </div>

@@ -1,26 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, inject, computed, signal } from '@angular/core';
+import { Starship } from '../interfaces/starship';
 
 @Component({
   selector: 'app-starship-img',
-  imports: [],
   templateUrl: './starship-img.component.html',
   styleUrl: './starship-img.component.scss'
 })
-export class StarshipImgComponent implements OnInit {
+export class StarshipImgComponent {
 
-  imgUrl: string | null = null;
-  shipId: string | null = null;
+  @Input() starshipId!: string;
+  @Input() starship!: Starship;
 
-  constructor(private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-    this.shipId = this.route.snapshot.paramMap.get('id');
-    if (this.shipId) this.imgUrl = this.getImgUrl(this.shipId);
-  }
-
-  getImgUrl(id: string): string {
-    return `https://res.cloudinary.com/dojj3zpfw/image/upload/v1741209478/starwars-ships/${id}.jpg`;
-  }
+  imgUrl(): string { return `https://res.cloudinary.com/dojj3zpfw/image/upload/v1741209478/starwars-ships/${this.starshipId}.jpg`; }
 
 }

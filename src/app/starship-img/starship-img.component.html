@@ -1,3 +1,6 @@
 <div>
-    <img [src]=imgUrl alt="">
+ 
+    @if(starshipId){<img [src]='imgUrl()' alt="{{starship.name}}">}
+    @else{ <p class="text-rose-600">Image for {{starship.name}} not found</p> }
+
 </div>

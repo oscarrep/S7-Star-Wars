@@ -12,11 +12,8 @@ import { StarshipImgComponent } from '../starship-img/starship-img.component';
   styleUrl: './starships.component.scss'
 })
 export class StarshipsComponent implements OnInit {
-
-  //private starshipService = inject(StarshipService);
-  //private image = inject(StarshipImgComponent);
   starships: Starship[] = [];
-  selectedShip: Starship | null = null;
+  selectedShip!: Starship;
   showDetails: boolean = false;
 
   constructor(public starshipService: StarshipService) { }
@@ -36,7 +33,7 @@ export class StarshipsComponent implements OnInit {
           crew: ship.crew,
           passengers: ship.passengers,
           cargo_capacity: ship.cargo_capacity,
-          comsumables: ship.consumables,
+          consumables: ship.consumables,
           hyperdrive_rating: ship.hyperdrive_rating,
           mglt: ship.mglt,
           starship_class: ship.starship_class,
@@ -53,18 +50,15 @@ export class StarshipsComponent implements OnInit {
     });
   }
 
-  showShip(url: string): void {
-    this.starshipService.getShip(url).subscribe({
-      next: (ship: any) => {
-        this.selectedShip = ship;
-        console.log(this.selectedShip);
-        //console.log(this.image.imgUrl);
-      },
-      error: (error) => {
-        console.error('Error getting starship:', error);
-      },
-    });
+  splitUrl(url: string): string { return url.split('/').slice(-2, -1)[0]; }
+
+  showShip(index: number): void {
+    if (index >= 0 && index < this.starships.length) this.selectedShip = this.starships[index];
+    else console.error('Invalid index', index);
   }
+
+  getStarshipIndex(ship: Starship): number { return this.starships.findIndex(s => s.name === ship.name); }
+
 
 
 }

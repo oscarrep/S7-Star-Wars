@@ -8,7 +8,7 @@ export interface Starship {
     crew: string;
     passengers: string;
     cargo_capacity: string;
-    comsumables: string;
+    consumables: string;
     hyperdrive_rating: string;
     mglt: string;
     starship_class: string;

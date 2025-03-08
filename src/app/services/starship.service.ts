@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StarshipRes } from '../interfaces/starship-res';
+import { Starship } from '../interfaces/starship';
 
 @Injectable({ providedIn: 'root' })
 
@@ -14,10 +15,5 @@ export class StarshipService {
   getStarshipsList(): Observable<StarshipRes> {
     return this.http.get<StarshipRes>(this.shipsUrl);
   }
-
-  getShip(url: string): Observable<any> {
-    return this.http.get(url);
-  }
-
 
 }
