@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { StarshipService } from '../services/starship.service';
 import { Starship } from '../interfaces/starship';
 import { StarshipDetailsComponent } from "../starship-details/starship-details.component";
@@ -17,10 +17,19 @@ export class StarshipsComponent implements OnInit {
   selectedShip!: Starship;
   showDetails: boolean = false;
   nextUrl: string | null = null;
-
+  
   constructor(public starshipService: StarshipService) { }
 
   ngOnInit(): void { this.showStarshipsList() }
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(): void {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      setTimeout(() => {
+        this.expandList();
+      }, 200);
+    }
+  }
 
   showStarshipsList(): void {
     this.starshipService.getStarshipsList().subscribe({
