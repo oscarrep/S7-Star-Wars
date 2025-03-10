@@ -1,8 +1,9 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Starship } from '../interfaces/starship';
 import { StarshipsComponent } from "../starships/starships.component";
 import { StarshipImgComponent } from '../starship-img/starship-img.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-starship-details',
@@ -16,11 +17,16 @@ export class StarshipDetailsComponent {
   @Input() starship!: Starship;
   @Input() starshipsComponent!: StarshipsComponent;
   @Input() starshipImgComponent!: StarshipImgComponent;
-  @Input() starshipId!: string;
-  @Input() route!: ActivatedRoute;
-  @Input() router!: Router;
+  starshipId!: string;
+  selectedShip!: Starship;
+  private location = inject(Location);
 
-  toggleDetails(): void {
-    this.starshipsComponent.showDetails = false;
+  constructor(private route: ActivatedRoute) {
+    this.selectedShip = history.state.ship;
+    this.starshipId = this.route.snapshot.paramMap.get('id')!;
+  }
+
+  backBtn(): void {
+    this.location.back();
   }
 }

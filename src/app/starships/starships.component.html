@@ -7,13 +7,13 @@
         <div>{{starship.next}}</div>
     </div>
     }
-    <button class="bg-rose-700 text-white font-bold py-2 px-4 rounded mt-4" type="button" 
-    (click)="expandList()">Expand list</button>
+    <!-- <button class="bg-rose-700 text-white font-bold py-2 px-4 rounded mt-4" type="button" (click)="expandList()">Expand list</button> -->
     }
 
-    @else if(selectedShip && showDetails){
+
+    @else if(showDetails){
     <!-- <app-starship-details [starship]="selectedShip" [starshipId]="splitUrl(selectedShip.url)" /> -->
-}
-<router-outlet />
+    <router-outlet />
+    }
 
 </div>

@@ -3,12 +3,12 @@ import { StarshipService } from '../services/starship.service';
 import { Starship } from '../interfaces/starship';
 import { StarshipDetailsComponent } from "../starship-details/starship-details.component";
 import { StarshipImgComponent } from '../starship-img/starship-img.component';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-starships',
   standalone: true,
-  imports: [StarshipDetailsComponent, StarshipImgComponent, RouterModule],
+  imports: [RouterModule, StarshipDetailsComponent],
   templateUrl: './starships.component.html',
   styleUrl: './starships.component.scss'
 })
@@ -23,15 +23,18 @@ export class StarshipsComponent implements OnInit {
 
   constructor(public starshipService: StarshipService) { }
 
-  ngOnInit(): void { this.showStarshipsList() }
+  ngOnInit(): void {
+    this.showStarshipsList();
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd)
+        if (event.url === '/starships') this.showDetails = false;
+    })
+  }
 
   @HostListener('window:scroll', ['$event'])
   onScroll(): void {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      setTimeout(() => {
-        this.expandList();
-      }, 200);
-    }
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight)
+      setTimeout(() => { this.expandList(); }, 200);
   }
 
   showStarshipsList(): void {
@@ -72,7 +75,10 @@ export class StarshipsComponent implements OnInit {
       const extractedId = this.splitUrl(this.starships[index].url);
       this.selectedShip = this.starships[index];
       this.showDetails = true;
-      this.router.navigate(['starship-details', extractedId], { relativeTo: this.route });
+      this.router.navigate(['starship-details', extractedId], {
+        relativeTo: this.route,
+        state: { ship: this.selectedShip }
+      });
     }
     else console.error('Invalid index:', index);
   }
