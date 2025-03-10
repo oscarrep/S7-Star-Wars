@@ -1,6 +1,5 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Starship } from '../interfaces/starship';
-//import { StarshipsComponent } from "../starships/starships.component";
 import { StarshipImgComponent } from '../starship-img/starship-img.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';

@@ -1,8 +1,7 @@
-import { Component, HostListener, Input, OnInit, inject } from '@angular/core';
+import { Component, HostListener, OnInit, inject } from '@angular/core';
 import { StarshipService } from '../services/starship.service';
 import { Starship } from '../interfaces/starship';
-import { StarshipImgComponent } from '../starship-img/starship-img.component';
-import { ActivatedRoute, Router, RouterModule, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-starships',
@@ -20,11 +19,7 @@ export class StarshipsComponent implements OnInit {
   selectedShip!: Starship;
   nextUrl: string | null = null;
 
-  ngOnInit(): void {
-    this.showStarshipsList();
-    this.router.events.subscribe((event) => {
-    })
-  }
+  ngOnInit(): void { this.showStarshipsList(); }
 
   @HostListener('window:scroll', ['$event'])
   onScroll(): void {
