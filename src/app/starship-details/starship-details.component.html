@@ -1,8 +1,9 @@
 <div class="text-gray-200 flex item flex-col">
+    @if(selectedShip){
     <div>
         <div class="font-bold">{{selectedShip.name}}</div>
     </div>
-    <app-starship-img [starshipId]="starshipId" [starship]="selectedShip"/>
+    <app-starship-img [starshipId]="starshipId" [starship]="selectedShip!" />
     <div class="flex flex-wrap">
         <div class="w-1/2 p-2">
             <div>Model: {{selectedShip.model}}</div>
@@ -18,7 +19,11 @@
             <div>Atmosferic speed: {{selectedShip.max_atmosphering_speed}} km/h</div>
             <div>Hyperdrive rating: {{selectedShip.hyperdrive_rating}}</div>
         </div>
-        <button class="bg-rose-700 text-white font-bold py-2 px-4 rounded mt-4" type="button" 
-        (click)="backBtn()"> ← </button>
+        <button class="bg-rose-700 text-white font-bold py-2 px-4 rounded mt-4" type="button" (click)="backBtn()"> ←
+        </button>
     </div>
+    }
+    @else{
+    <div class="text-center">Loading starship details</div>
+    }
 </div>

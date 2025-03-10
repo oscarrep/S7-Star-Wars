@@ -1,33 +1,28 @@
 import { Component, HostListener, Input, OnInit, inject } from '@angular/core';
 import { StarshipService } from '../services/starship.service';
 import { Starship } from '../interfaces/starship';
-import { StarshipDetailsComponent } from "../starship-details/starship-details.component";
 import { StarshipImgComponent } from '../starship-img/starship-img.component';
 import { ActivatedRoute, Router, RouterModule, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-starships',
   standalone: true,
-  imports: [RouterModule, StarshipDetailsComponent],
+  imports: [RouterModule],
   templateUrl: './starships.component.html',
   styleUrl: './starships.component.scss'
 })
 export class StarshipsComponent implements OnInit {
   router = inject(Router);
   route = inject(ActivatedRoute);
+  starshipService = inject(StarshipService);
   starships: Starship[] = [];
   newStarships: Starship[] = [];
   selectedShip!: Starship;
-  showDetails: boolean = false;
   nextUrl: string | null = null;
-
-  constructor(public starshipService: StarshipService) { }
 
   ngOnInit(): void {
     this.showStarshipsList();
     this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd)
-        if (event.url === '/starships') this.showDetails = false;
     })
   }
 
@@ -62,9 +57,7 @@ export class StarshipsComponent implements OnInit {
         this.nextUrl = response.next;
         console.log(this.starships);
       },
-      error: (error) => {
-        console.error('Error getting ships:', error);
-      },
+      error: (error) => console.error('Error getting ships:', error)
     });
   }
 
@@ -74,7 +67,6 @@ export class StarshipsComponent implements OnInit {
     if (index >= 0 && index < this.starships.length) {
       const extractedId = this.splitUrl(this.starships[index].url);
       this.selectedShip = this.starships[index];
-      this.showDetails = true;
       this.router.navigate(['starship-details', extractedId], {
         relativeTo: this.route,
         state: { ship: this.selectedShip }
@@ -86,7 +78,6 @@ export class StarshipsComponent implements OnInit {
   getStarshipIndex(ship: Starship): number { return this.starships.findIndex(s => s.name === ship.name); }
 
   expandList(): void {
-    console.log(this.nextUrl);
     if (this.nextUrl) {
       this.starshipService.getExpandedList(this.nextUrl).subscribe({
         next: (response) => {
@@ -111,9 +102,7 @@ export class StarshipsComponent implements OnInit {
           this.nextUrl = response.next;
           console.log(this.starships);
         },
-        error: (error) => {
-          console.error('Error getting ships:', error);
-        },
+        error: (error) => console.error('Error getting ships:', error)
       });
     }
   }

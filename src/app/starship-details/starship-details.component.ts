@@ -1,9 +1,10 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { Starship } from '../interfaces/starship';
-import { StarshipsComponent } from "../starships/starships.component";
+//import { StarshipsComponent } from "../starships/starships.component";
 import { StarshipImgComponent } from '../starship-img/starship-img.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { StarshipService } from '../services/starship.service';
 
 @Component({
   selector: 'app-starship-details',
@@ -13,20 +14,31 @@ import { Location } from '@angular/common';
   standalone: true,
 })
 
-export class StarshipDetailsComponent {
-  @Input() starship!: Starship;
-  @Input() starshipsComponent!: StarshipsComponent;
-  @Input() starshipImgComponent!: StarshipImgComponent;
+export class StarshipDetailsComponent implements OnInit {
   starshipId!: string;
-  selectedShip!: Starship;
+  selectedShip?: Starship;
   private location = inject(Location);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private starshipService = inject(StarshipService);
 
-  constructor(private route: ActivatedRoute) {
-    this.selectedShip = history.state.ship;
-    this.starshipId = this.route.snapshot.paramMap.get('id')!;
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.starshipId = params.get('id')!;
+      this.selectedShip = history.state.ship;
+      if (!this.selectedShip) this.getDetails(this.starshipId);
+    });
+  }
+
+  getDetails(id: string): void {
+    this.starshipService.getStarshipByID(id).subscribe({
+      next: (data) => this.selectedShip = data,
+      error: (err) => console.error('Error loading ship: ', err)
+    });
   }
 
   backBtn(): void {
-    this.location.back();
+    this.router.navigate(['/starships']);
   }
+
 }

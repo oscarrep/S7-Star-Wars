@@ -24,4 +24,8 @@ export class StarshipService {
     return this.http.get<StarshipRes>(url);
   }
 
+  getStarshipByID(id: string): Observable<Starship> {
+    return this.http.get<Starship>(this.shipsUrl + id + '/');
+  }
+
 }
