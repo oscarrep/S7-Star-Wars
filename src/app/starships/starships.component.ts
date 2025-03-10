@@ -1,23 +1,26 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit, inject } from '@angular/core';
 import { StarshipService } from '../services/starship.service';
 import { Starship } from '../interfaces/starship';
 import { StarshipDetailsComponent } from "../starship-details/starship-details.component";
 import { StarshipImgComponent } from '../starship-img/starship-img.component';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-starships',
   standalone: true,
-  imports: [StarshipDetailsComponent, StarshipImgComponent],
+  imports: [StarshipDetailsComponent, StarshipImgComponent, RouterModule],
   templateUrl: './starships.component.html',
   styleUrl: './starships.component.scss'
 })
 export class StarshipsComponent implements OnInit {
+  router = inject(Router);
+  route = inject(ActivatedRoute);
   starships: Starship[] = [];
   newStarships: Starship[] = [];
   selectedShip!: Starship;
   showDetails: boolean = false;
   nextUrl: string | null = null;
-  
+
   constructor(public starshipService: StarshipService) { }
 
   ngOnInit(): void { this.showStarshipsList() }
@@ -66,8 +69,10 @@ export class StarshipsComponent implements OnInit {
 
   showShip(index: number): void {
     if (index >= 0 && index < this.starships.length) {
+      const extractedId = this.splitUrl(this.starships[index].url);
       this.selectedShip = this.starships[index];
       this.showDetails = true;
+      this.router.navigate(['starship-details', extractedId], { relativeTo: this.route });
     }
     else console.error('Invalid index:', index);
   }

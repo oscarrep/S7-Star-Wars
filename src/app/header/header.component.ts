@@ -1,29 +1,28 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { StarshipsComponent } from "../starships/starships.component";
 import { HomeComponent } from "../home/home.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [StarshipsComponent, HomeComponent],
+  //imports: [StarshipsComponent, HomeComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  router=inject(Router);
   starshipsActive: boolean = false;
   homeActive: boolean = true;
-  //@Input() starshipsComponent!: StarshipsComponent;
-  //@Input() homeComponent!: HomeComponent;
-
   showHome() {
     this.homeActive = true;
     this.starshipsActive = false;
-    //if (this.starshipsComponent) this.starshipsComponent.showDetails = false; 
+    this.router.navigate(['home']);
   }
 
   showStarships() {
     this.starshipsActive = true;
     this.homeActive = false;
-    //if (this.starshipsComponent) this.starshipsComponent.showDetails = false;
+    this.router.navigate(['starships']);
   }
 
 }

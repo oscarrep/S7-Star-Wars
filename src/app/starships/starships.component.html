@@ -12,6 +12,8 @@
     }
 
     @else if(selectedShip && showDetails){
-    <app-starship-details [starship]="selectedShip" [starshipId]="splitUrl(selectedShip.url)" />
-    }
+    <!-- <app-starship-details [starship]="selectedShip" [starshipId]="splitUrl(selectedShip.url)" /> -->
+}
+<router-outlet />
+
 </div>
