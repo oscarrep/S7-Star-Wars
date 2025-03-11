@@ -7,8 +7,8 @@
     background: black;
     color: #ffcc13;
     font-family: 'Star Jedi', sans-serif;
-    font-size: 3vw;
-    text-align: center;
+    font-size: 5vw;
+    text-align: left;
 
     .scroll-text {
         position: absolute;
@@ -34,6 +34,10 @@
 h1,
 h2 {
     text-align: center;
+}
+
+p{
+    padding-top: 80px;
 }
 
 @keyframes scroll {
