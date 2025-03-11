@@ -1,0 +1,49 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    perspective: 450px;
+    background: black;
+    color: #ffcc13;
+    font-family: 'Star Jedi', sans-serif;
+    font-size: 3vw;
+    text-align: center;
+
+    .scroll-text {
+        position: absolute;
+        top: 155%;
+        width: 90%;
+        margin: 0 auto;
+        animation: scroll 40s linear infinite;
+        opacity: 1;
+    }
+}
+
+.fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30vh;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+@keyframes scroll {
+    from {
+        top: 155%;
+        transform: translateZ(0) rotateX(20deg);
+    }
+
+    to {
+        top: -700%;
+        transform: translateZ(-2500px) rotateX(21deg);
+    }
+}
