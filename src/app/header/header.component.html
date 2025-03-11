@@ -1,18 +1,22 @@
 <header>
-    <div class="bg-black border-b border-gray-200">
+    <div class="bg-black">
         <div class="flex justify-end space-x-10 py-2 px-4">
-            <a href="#" title="" class="text-base font-medium text-gray-200"> SEARCH </a>
-            <a href="#" title="" class="text-base font-medium text-gray-200"> LOGIN </a>
+            <a href="#" title="" class="login text-base font-medium text-gray-200"> LOG IN </a>
+            <a href="#" title="" class="signup text-base font-medium text-gray-200"> SIGN UP </a>
+        </div>
+        <div class="flex justify-center py-4">
+            <img src="./assets/images/logo-white.png" alt="logo-white" class="w-48 h-18" />
         </div>
         <div class="px-4 mx-auto px-8">
             <nav class="relative flex items-center justify-center h-16 lg:h-20">
                 <div class="flex items-center space-x-10">
-                    <a routerLink="/home" title="Home" class="text-base font-medium text-gray-400" (click)="showHome()">
+                    <a routerLink="/home" title="Home" class="header-tab text-base font-medium text-gray-400" (click)="showHome()">
                         HOME </a>
-                    <a routerLink="/starships" title="Starships" class="text-base font-medium text-gray-400"
+                    <a routerLink="/starships" title="Starships" class="header-tab text-base font-medium text-gray-400"
                         (click)="showStarships()"> STARSHIPS </a>
                 </div>
             </nav>
         </div>
+        <hr class="line" />
     </div>
 </header>
