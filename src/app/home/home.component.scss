@@ -1,23 +1,23 @@
 .wrapper {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 76.5vh;
     overflow: hidden;
     perspective: 450px;
-    background: black;
     color: #ffcc13;
     font-family: 'Star Jedi', sans-serif;
     font-size: 5vw;
     text-align: left;
+}
 
-    .scroll-text {
-        position: absolute;
-        top: 155%;
-        width: 90%;
-        margin: 0 auto;
-        animation: scroll 40s linear infinite;
-        opacity: 1;
-    }
+.scroll-text {
+    position: absolute;
+    top: 155%;
+    width: 90%;
+    margin: 0 auto;
+    animation: scroll 40s linear infinite;
+    opacity: 1;
+    pointer-events: none;
 }
 
 .fade {
@@ -25,9 +25,10 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 30vh;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
+    height: 40%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 100%);
     pointer-events: none;
+    z-index: 2;
 }
 
 h1,
@@ -35,13 +36,13 @@ h2 {
     text-align: center;
 }
 
-p{
+p {
     padding-top: 80px;
 }
 
 @keyframes scroll {
     from {
-        top: 155%;
+        top: 150%;
         transform: translateZ(0) rotateX(20deg);
     }
 
