@@ -1,33 +1,18 @@
-<!--
-    <ul class="flex border-b">
-    <li class="mr-1">
-        <button class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-grey-950 font-semibold"
-            (click)='showHome()'>HOME</button>
-    </li>
-    <li class="mr-1">
-        <button class="bg-white inline-block py-2 px-4 text-grey-950 hover:text-blue-800 font-semibold"
-            (click)='showStarships()'>STARSHIPS</button>
-    </li>
-</ul>
--->
 <header>
     <div class="bg-black border-b border-gray-200">
-        <div class="flex items-center space-x-10">
-            <a href="#" title="" class="text-base font-medium text-gray-400"> Sign up </a>
-            <a href="#" title="" class="text-base font-medium text-gray-400"> Log in </a>
+        <div class="flex justify-end space-x-10 py-2 px-4">
+            <a href="#" title="" class="text-base font-medium text-gray-200"> SEARCH </a>
+            <a href="#" title="" class="text-base font-medium text-gray-200"> LOGIN </a>
         </div>
         <div class="px-4 mx-auto px-8">
-            <nav class="relative flex items-center justify-between h-16 lg:h-20">
+            <nav class="relative flex items-center justify-center h-16 lg:h-20">
                 <div class="flex items-center space-x-10">
-                    <a routerLink="/home" title="Home" class="text-base font-medium text-gray-400" (click)="showHome()"> HOME </a>
-                    <a routerLink="/starships" title="Starships" class="text-base font-medium text-gray-400"(click)="showStarships()"> STARSHIPS </a>
+                    <a routerLink="/home" title="Home" class="text-base font-medium text-gray-400" (click)="showHome()">
+                        HOME </a>
+                    <a routerLink="/starships" title="Starships" class="text-base font-medium text-gray-400"
+                        (click)="showStarships()"> STARSHIPS </a>
                 </div>
             </nav>
-            <hr>
         </div>
     </div>
 </header>
-
-<!--
-@if(homeActive){ <app-home /> }
-@if(starshipsActive){ <app-starships /> }-->
