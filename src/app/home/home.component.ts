@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   episode: any
-  intro: { title: string; subtitle: string; par: string; par2: string; par3: string; }[] = [
+  episodeText: { title: string; subtitle: string; par: string; par2: string; par3: string; }[] = [
     {
       title: 'Episode I',
       subtitle: 'The Phantom Menace',
@@ -76,12 +76,13 @@ export class HomeComponent implements OnInit {
     },
   ]
 
+
   ngOnInit() {
     this.pickRandomEpisode();
   }
 
   pickRandomEpisode(): { title: string; subtitle: string; text: string; } {
-    this.episode = this.intro[Math.floor(Math.random() * this.intro.length)];
+    this.episode = this.episodeText[Math.floor(Math.random() * this.episodeText.length)];
     return this.episode;
   }
 
