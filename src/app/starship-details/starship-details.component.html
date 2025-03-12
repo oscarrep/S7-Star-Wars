@@ -6,20 +6,20 @@
     <app-starship-img [starshipId]="starshipId" [starship]="selectedShip!" />
     <div class="flex flex-wrap">
         <div class="w-1/2 p-2">
-            <div>Model: {{selectedShip.model}}</div>
-            <div>Class: {{selectedShip.starship_class}}</div>
-            <div>Manufacturer: {{selectedShip.manufacturer}}</div>
-            <div>Cargo capacity: {{selectedShip.cargo_capacity}} kg</div>
-            <div>Crew: {{selectedShip.crew}}</div>
+            <div><strong>Model:</strong> {{selectedShip.model}}</div>
+            <div><strong>Class:</strong> {{selectedShip.starship_class}}</div>
+            <div><strong>Manufacturer:</strong> {{selectedShip.manufacturer}}</div>
+            <div><strong>Cargo capacity:</strong> {{selectedShip.cargo_capacity}} kg</div>
+            <div><strong>Crew:</strong> {{selectedShip.crew}}</div>
         </div>
         <div class="w-1/2 p-2">
-            <div>Passengers: {{selectedShip.passengers}}</div>
-            <div>Cost: {{selectedShip.cost_in_credits}} credits</div>
-            <div>Length: {{selectedShip.length}}m</div>
-            <div>Atmosferic speed: {{selectedShip.max_atmosphering_speed}} km/h</div>
-            <div>Hyperdrive rating: {{selectedShip.hyperdrive_rating}}</div>
+            <div><strong>Passengers:</strong> {{selectedShip.passengers}}</div>
+            <div><strong>Cost:</strong> {{selectedShip.cost_in_credits}} credits</div>
+            <div><strong>Length:</strong> {{selectedShip.length}}m</div>
+            <div><strong>Atmosferic speed:</strong> {{selectedShip.max_atmosphering_speed}} km/h</div>
+            <div><strong>Hyperdrive rating:</strong> {{selectedShip.hyperdrive_rating}}</div>
         </div>
-        <button class="bg-rose-700 text-white font-bold py-2 px-4 rounded mt-4" type="button" (click)="backBtn()"> ←
+        <button class="bg-red-600 text-white font-bold py-2 px-4 rounded mt-4" type="button" (click)="backBtn()"> ←
         </button>
     </div>
     }
