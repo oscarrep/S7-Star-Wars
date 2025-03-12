@@ -10,10 +10,11 @@
         <div class="px-4 mx-auto px-8">
             <nav class="relative flex items-center justify-center h-16 lg:h-20">
                 <div class="flex items-center space-x-10">
-                    <a routerLink="/home" title="Home" class="header-tab text-base font-medium text-gray-400" (click)="showHome()">
+                    <a routerLink="/home" title="Home" [style.borderColor]="randomColor"
+                        class="header-tab text-base font-medium text-gray-400" (click)="showHome()">
                         HOME </a>
-                    <a routerLink="/starships" title="Starships" class="header-tab text-base font-medium text-gray-400"
-                        (click)="showStarships()"> STARSHIPS </a>
+                    <a routerLink="/starships" title="Starships" [style.borderColor]="randomColor"
+                        class="header-tab text-base font-medium text-gray-400" (click)="showStarships()"> STARSHIPS </a>
                 </div>
             </nav>
         </div>

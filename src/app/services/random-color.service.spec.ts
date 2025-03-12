@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-import { StarshipService } from '../services/starship.service';
+import { RandomColorService } from './random-color.service';
 
-describe('StarshipService', () => {
-  let service: StarshipService;
+describe('RandomColorService', () => {
+  let service: RandomColorService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(StarshipService);
+    service = TestBed.inject(RandomColorService);
   });
 
   it('should be created', () => {

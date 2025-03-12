@@ -1,6 +1,6 @@
 <div class="text-gray-200 flex item flex-col starship-container">
     @if(selectedShip){
-    <div class="starship-card">
+    <div class="starship-card" [style.borderColor]="colorService.randomColor">
         <h2 class="ship-title">{{ selectedShip.name }}</h2>
         <app-starship-img [starshipId]="starshipId" [starship]="selectedShip!"/>
         <div class="ship-details">

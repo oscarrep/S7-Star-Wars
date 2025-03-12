@@ -1,4 +1,4 @@
-import { Component, Input, inject, computed, signal } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Starship } from '../interfaces/starship';
 
 @Component({
