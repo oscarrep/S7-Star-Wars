@@ -1,14 +1,12 @@
-<div class="bg list-bg">
-    @if(!showDetails){
+<div class="list-bg">
+    @if(!route.firstChild){
     @for(starship of starships; track starship){
     <div class="text item" (click)="showShip(getStarshipIndex(starship))">
         <div class="font-bold">{{starship.name}}</div>
         <div>{{starship.model}}</div>
+        <div>{{starship.next}}</div>
     </div>
     }
     }
-
-    @else if(selectedShip && showDetails){
-    <app-starship-details [starship]="selectedShip" [starshipId]="splitUrl(selectedShip.url)" />
-    }
+    <router-outlet />
 </div>

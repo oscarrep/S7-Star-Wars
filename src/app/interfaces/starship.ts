@@ -10,9 +10,7 @@ export interface Starship {
     cargo_capacity: string;
     consumables: string;
     hyperdrive_rating: string;
-    mglt: string;
     starship_class: string;
-    count: number;
     next: string | null;
     previous: string | null;
     url: string;

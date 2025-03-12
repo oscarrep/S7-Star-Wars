@@ -1,6 +1,4 @@
-<div>
- 
-    @if(starshipId){<img [src]='imgUrl()' alt="{{starship.name}}">}
+<div class="image-container">
+    @if(starshipId){<img [src]='imgUrl()' alt="{{starship.name}}" class="starship-image">}
     @else{ <p class="text-rose-600">Image for {{starship.name}} not found</p> }
-
 </div>
