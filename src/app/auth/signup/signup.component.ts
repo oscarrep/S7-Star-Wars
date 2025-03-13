@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -14,6 +15,8 @@ export class SignupComponent implements OnInit {
   email: string = '';
   password: string = '';
   private fireAuth = inject(Auth);
+  private router = inject(Router);
+
 
   ngOnInit(): void {
 
@@ -21,7 +24,7 @@ export class SignupComponent implements OnInit {
 
   signUp() {
     createUserWithEmailAndPassword(this.fireAuth, this.email, this.password)
-      .then(userCredential => console.log('User created:', userCredential.user))
+      .then(userCredential => console.log('User created:', userCredential.user.email, this.password))
       .catch(error => console.error('Error creating user:', error));
   }
 }
