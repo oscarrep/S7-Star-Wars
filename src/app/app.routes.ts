@@ -4,6 +4,7 @@ import { StarshipsComponent } from './starships/starships.component';
 import { StarshipDetailsComponent } from './starship-details/starship-details.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -11,8 +12,8 @@ export const routes: Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'login', component: LoginComponent },
     {
-        path: 'starships', component: StarshipsComponent, children: [
-            { path: 'starship-details/:id', component: StarshipDetailsComponent }
+        path: 'starships', component: StarshipsComponent, canActivate: [authGuard], children: [
+            { path: 'starship-details/:id', component: StarshipDetailsComponent, canActivate: [authGuard] }
         ]
     },
     { path: '**', redirectTo: '/home' }
