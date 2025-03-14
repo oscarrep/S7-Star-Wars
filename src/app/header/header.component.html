@@ -1,8 +1,8 @@
 <header>
     <div class="bg-black">
         <div class="flex justify-end space-x-10 py-2 px-4">
-            <a routerLink="/login" title="Log in" class="login text-base font-medium text-gray-200"> LOG IN </a>
-            <a routerLink="/signup" title="Sign up" class="signup text-base font-medium text-gray-200"> SIGN UP </a>
+            <a routerLink="/login" title="Log in" (click)="showLogin()" class="login text-base font-medium text-gray-200"> LOG IN </a>
+            <a routerLink="/signup" title="Sign up" (click)="showSignup()" class="signup text-base font-medium text-gray-200"> SIGN UP </a>
         </div>
         <div class="flex justify-center py-4">
             <img src="./assets/images/logo-white.png" alt="logo-white" class="w-48 h-18" />
