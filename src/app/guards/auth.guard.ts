@@ -5,6 +5,11 @@ import { session } from '../../utils/session';
 
 export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
   const router: Router = inject(Router);
-  const protectedRoutes: string[] = ['/starships'];
-  return protectedRoutes.includes(state.url) && !session ? router.navigate(['/login']) : true;
+  const isLogged = !!session;
+
+  if (!isLogged && state.url.startsWith('/starships')) {
+    router.navigate(['/login']);
+    return false;
+  }
+  else return true;
 };
