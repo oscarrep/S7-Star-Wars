@@ -3,6 +3,7 @@ import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SessionService } from '../../services/session.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -17,15 +18,16 @@ export class LoginComponent {
   private fireAuth = inject(Auth);
   private router = inject(Router);
   private sessionService = inject(SessionService);
+  private location = inject(Location);
 
   login() {
     signInWithEmailAndPassword(this.fireAuth, this.email, this.password)
-    .then(() => {
-      this.sessionService.setSession(true);
-      this.router.navigate(['/home']);
-      console.log('LOGGED IN', this.email, this.password);
-      console.log('session', this.sessionService.getSession());
-    })
-    .catch(error => console.error('login failed', error));
+      .then(() => {
+        this.sessionService.setSession(true);
+        this.location.back();
+      })
+      .catch(error => console.error('login failed', error));
   }
+
+  backBtn() { this.location.back(); }
 }

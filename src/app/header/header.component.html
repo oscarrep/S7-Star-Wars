@@ -1,8 +1,17 @@
+@if(showHeader){
 <header>
     <div class="bg-black">
         <div class="flex justify-end space-x-10 py-2 px-4">
-            <a routerLink="/login" title="Log in" (click)="showLogin()" class="login text-base font-medium text-gray-200"> LOG IN </a>
-            <a routerLink="/signup" title="Sign up" (click)="showSignup()" class="signup text-base font-medium text-gray-200"> SIGN UP </a>
+            @if(sessionService.getSession()===false){
+            <a routerLink="/login" title="Log in" (click)="showLogin()"
+                class="login text-base font-medium text-gray-200"> LOG IN </a>
+            }
+            @else if(sessionService.getSession()===true){
+            <a routerLink="/logout" title="Log out" (click)="showLogOut()"
+                class="login text-base font-medium text-gray-200"> LOG OUT </a>
+            }
+            <a routerLink="/signup" title="Sign up" (click)="showSignup()"
+                class="signup text-base font-medium text-gray-200"> SIGN UP </a>
         </div>
         <div class="flex justify-center py-4">
             <img src="./assets/images/logo-white.png" alt="logo-white" class="w-48 h-18" />
@@ -21,3 +30,5 @@
         <hr class="line" />
     </div>
 </header>
+}
+<router-outlet></router-outlet>

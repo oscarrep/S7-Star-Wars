@@ -1,20 +1,29 @@
 import { Component, Input, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AppComponent } from '../app.component';
-
+import { LoginComponent } from '../auth/login/login.component';
+import { SessionService } from '../services/session.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
+  imports: [RouterModule]
 })
 export class HeaderComponent {
-  router = inject(Router);
+  private router = inject(Router);
+  sessionService = inject(SessionService);
   starshipsActive: boolean = false;
   homeActive: boolean = true;
+  showHeader: boolean = true;
   randomColor: string = '';
   @Input() app!: AppComponent;
+  @Input() login!: LoginComponent;
 
   ngOnInit() {
+    this.router.events.subscribe(() => {
+      if (this.router.url.includes('/login') || this.router.url.includes('/logout') || this.router.url.includes('/signup')) this.showHeader = false;
+      else this.showHeader = true;
+    });
     document.documentElement.style.setProperty('--border-color', this.randomizeColor());
   }
 
@@ -23,6 +32,8 @@ export class HeaderComponent {
   showStarships() { this.router.navigate(['starships']); }
 
   showLogin() { this.router.navigate(['login']); }
+
+  showLogOut() { this.router.navigate(['logout']); }
 
   showSignup() { this.router.navigate(['signup']); }
 
