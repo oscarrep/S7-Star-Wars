@@ -26,11 +26,13 @@ export class StarshipsComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   onScroll(): void {
-    clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => {
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight)
-        this.expandList();
-    }, 200);
+    if (this.router.url === '/starships') {
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight)
+          this.expandList();
+      }, 200);
+    }
   }
 
   showStarshipsList(): void {
@@ -50,6 +52,7 @@ export class StarshipsComponent implements OnInit {
           hyperdrive_rating: ship.hyperdrive_rating,
           mglt: ship.mglt,
           starship_class: ship.starship_class,
+          pilots: ship.pilots,
           count: ship.count,
           next: ship.next,
           previous: ship.previous,
@@ -95,6 +98,7 @@ export class StarshipsComponent implements OnInit {
             consumables: ship.consumables,
             hyperdrive_rating: ship.hyperdrive_rating,
             starship_class: ship.starship_class,
+            pilots: ship.pilots,
             next: ship.next,
             previous: ship.previous,
             url: ship.url,

@@ -4,11 +4,13 @@ import { StarshipImgComponent } from '../starship-img/starship-img.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StarshipService } from '../services/starship.service';
 import { RandomColorService } from '../services/random-color.service';
+import { PilotsComponent } from "../pilots/pilots/pilots.component";
+import { FilmsComponent } from "../films/films/films.component";
 @Component({
   selector: 'app-starship-details',
   templateUrl: './starship-details.component.html',
   styleUrl: './starship-details.component.scss',
-  imports: [StarshipImgComponent],
+  imports: [StarshipImgComponent, PilotsComponent, FilmsComponent],
   standalone: true,
 })
 
@@ -19,18 +21,23 @@ export class StarshipDetailsComponent implements OnInit {
   private router = inject(Router);
   private starshipService = inject(StarshipService);
   colorService = inject(RandomColorService);
+  pilots: string[] = []
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.starshipId = params.get('id')!;
       this.selectedShip = history.state.ship;
       if (!this.selectedShip) this.getDetails(this.starshipId);
+      else this.pilots=this.selectedShip.pilots
     });
   }
 
   getDetails(id: string): void {
     this.starshipService.getStarshipByID(id).subscribe({
-      next: (data) => this.selectedShip = data,
+      next: (data) => {
+        this.selectedShip = data;
+        this.pilots = this.selectedShip?.pilots;
+      },
       error: (err) => console.error('Error loading ship: ', err)
     });
   }

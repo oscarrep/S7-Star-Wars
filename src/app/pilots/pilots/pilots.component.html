@@ -1,1 +1,7 @@
-<p>pilots works!</p>
+@for(pilot of pilotDetails;track pilot){
+<div class="item text-white">
+    <div>{{pilot.name}}</div>
+    <div>Date of birth: {{pilot.birth_year}}</div>
+    <div>Gender: {{pilot.gender}}</div>
+</div>
+}

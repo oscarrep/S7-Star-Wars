@@ -11,6 +11,7 @@ export interface Starship {
     consumables: string;
     hyperdrive_rating: string;
     starship_class: string;
+    pilots:[];
     next: string | null;
     previous: string | null;
     url: string;
