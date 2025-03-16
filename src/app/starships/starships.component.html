@@ -1,7 +1,7 @@
-<div class="list-bg">
+<div class="list-bg mb-40">
     @if(!route.firstChild){
     @for(starship of starships; track starship){
-    <div class="text item" (click)="showShip(getStarshipIndex(starship))">
+    <div class="text item" [style.borderColor]="colorService.randomColor" (click)="showShip(getStarshipIndex(starship))">
         <div class="font-bold">{{starship.name}}</div>
         <div>{{starship.model}}</div>
         <div>{{starship.next}}</div>
