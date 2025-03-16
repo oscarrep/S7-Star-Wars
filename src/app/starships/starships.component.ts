@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit, inject } from '@angular/core';
 import { StarshipService } from '../services/starship.service';
 import { Starship } from '../interfaces/starship';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { RandomColorService } from '../services/random-color.service';
 
 @Component({
   selector: 'app-starships',
@@ -14,17 +15,22 @@ export class StarshipsComponent implements OnInit {
   router = inject(Router);
   route = inject(ActivatedRoute);
   starshipService = inject(StarshipService);
+  colorService = inject(RandomColorService);
   starships: Starship[] = [];
   newStarships: Starship[] = [];
   selectedShip!: Starship;
   nextUrl: string | null = null;
+  timeout: any;
 
   ngOnInit(): void { this.showStarshipsList(); }
 
   @HostListener('window:scroll', ['$event'])
   onScroll(): void {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight)
-      setTimeout(() => { this.expandList(); }, 200);
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight)
+        this.expandList();
+    }, 200);
   }
 
   showStarshipsList(): void {
