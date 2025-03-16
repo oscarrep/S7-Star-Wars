@@ -30,4 +30,6 @@ export class LoginComponent {
   }
 
   backBtn() { this.location.back(); }
+
+  showSignup() { this.router.navigate(['signup']); }
 }

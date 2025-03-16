@@ -7,14 +7,13 @@
             <img src="./assets/images/logo-white.png" alt="logo-white" class="w-48 h-18 my-10" />
         </div>
         <div class="logout-container">
-            <h2 class="text-2xl font-bold">Log Out</h2>
-            <form>
-                <br><br>
-                <p class="block">Do you want to Log Out?</p>
-                <br><br>
-                <button type="button" (click)="logOut()" class="bg-blue-500 text-white py-2 px-4 rounded mx-2">Log Out</button>
-                <button type="button" (click)="backBtn()" class="bg-blue-500 text-white py-2 px-4 rounded mx-2">Cancel</button>
-            </form>
+            <div class="text-container my-5">
+                <img src="./assets/images/my-disney.png" alt="logo-white" class="w-24 h-8 my-5" />
+                <h2 class="text-2xl font-bold">Log Out</h2>
+                <p class="mt-8">Are you sure you want to log out from your MyDisney account?</p>
+                <button type="submit" (click)="logOut()" class="logout-btn mt-8">Log Out</button>
+                <button type="submit" (click)="backBtn()" class="logout-btn mt-8">Cancel</button>
+            </div>
         </div>
     </div>
 </div>

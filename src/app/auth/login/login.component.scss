@@ -2,15 +2,23 @@
     background-color: white;
     border-radius: 30px;
     padding: 5%;
+    justify-content: center;
+    display: flex;
+}
+
+.par {
+    text-align: justify;
+}
+
+.text-container {
+    width: 80%;
 }
 
 .container{
     height: 100%;
     width: 35%;
     justify-content: center;
-    text-align: center;
     align-items: center;
-    //padding: 5%;
 }
 
 .close-btn {
@@ -22,4 +30,28 @@
     font-size: larger;
     font-weight: bolder;
     text-align: center;
+}
+
+.login-btn {
+    border-radius: 50px;
+    background-color: #FADE4B;
+    width: 100%;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.login-btn:hover{
+    cursor: pointer;
+    background-color: #e7cf58;
+}
+
+.input {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .signup-container img {
+        width: 100px;
+        height: auto;
+    }
 }

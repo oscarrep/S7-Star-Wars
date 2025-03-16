@@ -7,18 +7,19 @@
             <img src="./assets/images/logo-white.png" alt="logo-white" class="w-48 h-18 my-10" />
         </div>
         <div class="login-container">
-            <h2 class="text-2xl font-bold">Login</h2>
-            <form>
-                <p for="email" class="block">Email:</p>
-                <input type="email" [(ngModel)]="email" id="email" name="email" required
-                    class="border border-gray-300 rounded-md p-2 mt-2">
-                <br><br>
-                <p for="password" class="block">Password:</p>
-                <input type="password" [(ngModel)]="password" id="password" name="password" required
-                    class="border border-gray-300 rounded-md p-2 mt-2">
-                <br><br>
-                <button type="submit" (click)="login()" class="bg-blue-500 text-white py-2 px-4 rounded">Log in</button>
-            </form>
+            <div class="text-container my-5">
+                <img src="./assets/images/my-disney.png" alt="logo-white" class="w-24 h-8 my-5" />
+                <h2 class="text-2xl font-bold">Enter your account credentials to continue</h2>
+                <form>
+                    <p class="mt-8">Log in to Star Wars with your MyDisney account.</p>
+                    <input type="email" [(ngModel)]="email" id="email" name="email" required
+                        class="input border bg-gray-100 border-none rounded p-2 mt-8">
+                    <input type="password" [(ngModel)]="password" id="password" name="password" required
+                        class="input border bg-gray-100 border-none rounded p-2 mt-8">
+                    <button type="submit" (click)="login()" class="login-btn mt-8">Log in</button>
+                    <button type="button" (click)="showSignup()" class="login-btn mt-8">I don't have an account</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

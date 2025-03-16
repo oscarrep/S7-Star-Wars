@@ -7,19 +7,20 @@
             <img src="./assets/images/logo-white.png" alt="logo-white" class="w-48 h-18 my-10" />
         </div>
         <div class="signup-container">
-            <h2 class="text-2xl font-bold">Sign Up</h2>
-            <form>
-                <p for="email" class="block">Email:</p>
-                <input type="email" [(ngModel)]="email" id="email" name="email" required
-                    class="border border-gray-300 rounded-md p-2 mt-2">
-                <br><br>
-                <p for="password" class="block">Password:</p>
-                <input type="password" [(ngModel)]="password" id="password" name="password" required
-                    class="border border-gray-300 rounded-md p-2 mt-2">
-                <br><br>
-                <button type="submit" (click)="signUp()"
-                    class="bg-blue-500 text-white py-2 px-4 rounded">Register</button>
-            </form>
+            <div class="text-container my-5">
+                <img src="./assets/images/my-disney.png" alt="logo-white" class="w-24 h-8 my-5" />
+                <h2 class="text-2xl font-bold">Create an account to continue</h2>
+                <form>
+                    <p class="mt-8 par">With a MyDisney account, you can log in to Star Wars and other services across The
+                        Walt Disney Family of Companies.</p>
+                    <input type="email" [(ngModel)]="email" id="email" name="email" placeholder="Email" required
+                        class="input border bg-gray-100 border-none rounded p-2 mt-8">
+                    <input type="password" [(ngModel)]="password" id="password" name="password"
+                        placeholder="Choose a password" required
+                        class="input border bg-gray-100 border-none rounded p-2 mt-8">
+                    <button type="submit" (click)="signUp()" class="register-btn mt-8">Register</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
