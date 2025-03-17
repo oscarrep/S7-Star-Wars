@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { StarshipService } from '../services/starship.service';
 import { RandomColorService } from '../services/random-color.service';
 import { PilotsComponent } from "../pilots/pilots/pilots.component";
-import { FilmsComponent } from "../films/films/films.component";
+import { FilmsComponent } from "../films/films.component";
 @Component({
   selector: 'app-starship-details',
   templateUrl: './starship-details.component.html',
