@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { PilotsService } from '../../services/pilots.service';
-import { Pilot } from '../../interfaces/pilot';
+import { PilotsService } from '../services/pilots.service';
+import { Pilot } from '../interfaces/pilot';
 
 @Component({
   selector: 'app-pilots',

@@ -1,8 +1,18 @@
-@for(film of filmDetails; track film){
-<div class="item text-white">
-    <div>Episode {{film.episode_id}}</div>
-    <div>{{film.title}}</div>
-    <div>{{film.director}}</div>
-    <div>{{film.release_date}}</div>
+<div class="films-container">
+    <div class="films-bg my-5">
+        <h2 class="film-title">Films</h2>
+        <div class="film-details">
+            @for(film of filmDetails; track film){
+            <div class="film-card">
+                <img src="./assets/images/logo.png" alt="{{film.title}}">
+                <div class="mt-5">
+                    <div><strong>Episode {{film.episode_id}}</strong></div>
+                    <div><strong>{{film.title}}</strong></div>
+                    <div>{{film.director}}</div>
+                    <div>{{film.release_date}}</div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
 </div>
-}

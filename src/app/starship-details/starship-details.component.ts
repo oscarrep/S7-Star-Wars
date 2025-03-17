@@ -4,7 +4,7 @@ import { StarshipImgComponent } from '../starship-img/starship-img.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StarshipService } from '../services/starship.service';
 import { RandomColorService } from '../services/random-color.service';
-import { PilotsComponent } from "../pilots/pilots/pilots.component";
+import { PilotsComponent } from "../pilots/pilots.component";
 import { FilmsComponent } from "../films/films.component";
 @Component({
   selector: 'app-starship-details',

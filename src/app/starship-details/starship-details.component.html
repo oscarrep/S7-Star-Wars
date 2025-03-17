@@ -1,6 +1,6 @@
 <div class="flex starship-container">
     @if(selectedShip){
-    <div class="starship-card" [style.borderColor]="colorService.randomColor">
+    <div class="starship-card my-5" [style.borderColor]="colorService.randomColor">
         <h2 class="ship-title">{{ selectedShip.name }}</h2>
         <app-starship-img [starshipId]="starshipId" [starship]="selectedShip!" />
         <div class="ship-details">
@@ -19,9 +19,9 @@
                 <div><strong>Hyperdrive Rating:</strong> {{ selectedShip.hyperdrive_rating }}</div>
             </div>
         </div>
-        <button class="back-btn" type="button" (click)="backBtn()"> ← Back </button>
+        <button class="back-btn my-5" type="button" (click)="backBtn()"> ← Back </button>
     </div>
-    }
+}
     @else{
     <div class="text-center">Loading starship details</div>
     }

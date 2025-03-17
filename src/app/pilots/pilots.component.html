@@ -1,0 +1,22 @@
+<div class="pilots-container">
+    <div class="pilots-bg my-5">
+        <h2 class="pilot-title">Pilots</h2>
+        <div class="pilot-details">
+            @if(pilots.length === 0){<div class="loading-text">
+                <div>No pilots known</div>
+            </div>}
+            @else{
+            @for(pilot of pilotDetails; track pilot){
+            <div class="column">
+                <div class="pilot-card">
+                    <img src="./assets/images/logo.png" alt="{{pilot.name}}">
+                    <div><strong>{{pilot.name}}</strong></div>
+                    <div>Date of birth: <strong>{{pilot.birth_year}}</strong></div>
+                    <div>{{pilot.gender}}</div>
+                </div>
+            </div>
+            }
+            }
+        </div>
+    </div>
+</div>

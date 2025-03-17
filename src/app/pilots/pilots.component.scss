@@ -1,17 +1,15 @@
-.starship-container {
+.pilots-container {
     display: flex;
     justify-content: center;
-    min-height: 75vh;
-    max-height: 90vh;
-    padding: 20px;
+    min-height: 50vh;
 }
 
-.starship-card {
+.pilots-bg {
     background-color: rgba(0, 0, 0, 0.8);
     border: 2px solid var(--border-color);
     padding: 20px;
-    width: 60%;
-    max-width: 600px;
+    width: 90%;
+    max-width: 900px;
     box-shadow: 0px 0px 15px var(--border-color);
     font-family: 'Orbitron', sans-serif;
     color: white;
@@ -20,7 +18,16 @@
     justify-content: center;
 }
 
-.ship-title {
+.pilot-card{
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid gray;
+}
+
+.pilot-card strong {
+    color: var(--border-color);
+}
+
+.pilot-title {
     font-size: 1.8rem;
     font-weight: bold;
     color: var(--border-color);
@@ -28,7 +35,7 @@
     margin-bottom: 15px;
 }
 
-.ship-details {
+.pilot-details {
     display: flex;
     justify-content: space-between;
     gap: 20px;
@@ -39,26 +46,7 @@
     width: 50%;
     text-align: left;
     font-size: 1rem;
-}
-
-.column strong {
-    color: var(--border-color);
-}
-
-.back-btn {
-    background-color: var(--border-color);
-    color: white;
-    font-weight: bold;
-    font-size: 1.1rem;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    transition: all 0.3s ease-in-out;
-}
-
-.back-btn:hover {
-    cursor: pointer;
-    box-shadow: 0px 0px 15px var(--border-color);
+    display: flex;
 }
 
 .loading-text {
