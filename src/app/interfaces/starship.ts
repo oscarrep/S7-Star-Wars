@@ -12,6 +12,7 @@ export interface Starship {
     hyperdrive_rating: string;
     starship_class: string;
     pilots:[];
+    films:[];
     next: string | null;
     previous: string | null;
     url: string;

@@ -7,7 +7,6 @@ export interface Pilot {
     eye_color: string,
     birth_year: string,
     gender: string,
-    homeworld: string,
     films: string,
     url: string,
 }

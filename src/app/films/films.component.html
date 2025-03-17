@@ -1,4 +1,8 @@
-    <div class="item text-white">
-        <div>FILMS HERE</div>
-    </div>
-    
+@for(film of filmDetails; track film){
+<div class="item text-white">
+    <div>Episode {{film.episode_id}}</div>
+    <div>{{film.title}}</div>
+    <div>{{film.director}}</div>
+    <div>{{film.release_date}}</div>
+</div>
+}

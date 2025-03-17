@@ -22,13 +22,17 @@ export class StarshipDetailsComponent implements OnInit {
   private starshipService = inject(StarshipService);
   colorService = inject(RandomColorService);
   pilots: string[] = []
+  films: string[] = []
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.starshipId = params.get('id')!;
       this.selectedShip = history.state.ship;
       if (!this.selectedShip) this.getDetails(this.starshipId);
-      else this.pilots=this.selectedShip.pilots
+      else { 
+        this.pilots = this.selectedShip.pilots; 
+        this.films = this.selectedShip.films; 
+      }
     });
   }
 
@@ -37,6 +41,11 @@ export class StarshipDetailsComponent implements OnInit {
       next: (data) => {
         this.selectedShip = data;
         this.pilots = this.selectedShip?.pilots;
+        this.films = this.selectedShip?.films;
+        console.log('getDetails:')
+        console.log(this.films)
+        console.log(this.pilots)
+        console.log('-------------')
       },
       error: (err) => console.error('Error loading ship: ', err)
     });
