@@ -4,8 +4,8 @@
         <div class="film-details">
             @for(film of filmDetails; track film){
             <div class="film-card">
-                <img src="./assets/images/logo.png" alt="{{film.title}}">
                 <div class="mt-5">
+                    <app-film-img [filmId]="extractId(film.url)" />
                     <div><strong>Episode {{film.episode_id}}</strong></div>
                     <div><strong>{{film.title}}</strong></div>
                     <div>{{film.director}}</div>
