@@ -20,6 +20,8 @@
 
 .pilot-card{
     background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    text-align: center;
 }
 
 .pilot-card strong {
@@ -36,7 +38,7 @@
 
 .pilot-details {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     gap: 20px;
     margin: 20px 0;
 }
@@ -45,7 +47,7 @@
     width: 50%;
     text-align: left;
     font-size: 1rem;
-    display: flex;
+    //display: flex;
 }
 
 .loading-text {
