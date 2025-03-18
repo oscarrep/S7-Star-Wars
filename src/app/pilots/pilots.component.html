@@ -8,8 +8,8 @@
             @else{
             @for(pilot of pilotDetails; track pilot){
             <div class="column">
-                <div class="pilot-card">
-                    <img src="./assets/images/logo.png" alt="{{pilot.name}}">
+                <div class="pilot-card p-2">
+                    <app-pilot-img [pilotId]="extractId(pilot.url)" />
                     <div><strong>{{pilot.name}}</strong></div>
                     <div>Date of birth: <strong>{{pilot.birth_year}}</strong></div>
                     <div>{{pilot.gender}}</div>

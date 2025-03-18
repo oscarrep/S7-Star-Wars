@@ -42,10 +42,6 @@ export class StarshipDetailsComponent implements OnInit {
         this.selectedShip = data;
         this.pilots = this.selectedShip?.pilots;
         this.films = this.selectedShip?.films;
-        console.log('getDetails:')
-        console.log(this.films)
-        console.log(this.pilots)
-        console.log('-------------')
       },
       error: (err) => console.error('Error loading ship: ', err)
     });
