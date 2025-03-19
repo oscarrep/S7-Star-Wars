@@ -7,8 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "postinstall": "ts-node ./scripts/create-environment.ts"
-  },
+    "postinstall": "ts-node ./scripts/create-environment.ts",
+    "vercel-build": "./vercel-build.sh && ng build --configuration=production"
+    },
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.0.0",
