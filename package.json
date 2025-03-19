@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "postinstall": "ts-node scripts/create-environment.ts"
+    "postinstall": "ts-node /src/scripts/create-environment.ts"
   },
   "private": true,
   "dependencies": {
