@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
+import { HeaderComponent } from '../header/header.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
+  @Input() headerComponent!: HeaderComponent;
+  private router = inject(Router);
 
   episode: any
   episodeText: { title: string; subtitle: string; par: string; par2: string; par3: string; }[] = [
@@ -85,5 +89,7 @@ export class HomeComponent implements OnInit {
     this.episode = this.episodeText[Math.floor(Math.random() * this.episodeText.length)];
     return this.episode;
   }
+
+  showStarships() { this.router.navigate(['starships']); }
 
 }
