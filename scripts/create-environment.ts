@@ -1,4 +1,4 @@
-/*import fs from 'fs';
+import fs from 'fs';
 
 const envConfig = `
 export const environment = {
@@ -14,4 +14,4 @@ export const environment = {
   }
 };`;
 
-fs.writeFileSync('src/environments/environment.prod.ts', envConfig);*/
+fs.writeFileSync('src/environments/environment.prod.ts', envConfig);
