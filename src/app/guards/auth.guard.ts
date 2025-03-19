@@ -8,7 +8,7 @@ export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: R
   const sessionService = inject(SessionService);
 
   if (!sessionService.getSession() && state.url.startsWith('/starships')) {
-    router.navigate(['/login']);
+    router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
     return false;
   }
   else return true;
