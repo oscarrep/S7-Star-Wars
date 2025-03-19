@@ -60,7 +60,7 @@ git clone https://github.com/oscarrep/S7-Star-Wars
 ```
 2. Navigate to the project folder:
 ```bash
-cd s6-budget-angular
+cd s7-star-wars
 ```
 3. Install dependencies:
 ```bash
