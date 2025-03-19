@@ -44,7 +44,7 @@ describe('StarshipDetailsComponent', () => {
   };
 
   beforeEach(async () => {
-    const starshipServiceSpy = jasmine.createSpyObj('StarshipSerice', ['getStarshipByID']);
+    const starshipServiceSpy = jasmine.createSpyObj('StarshipService', ['getStarshipByID']);
     starshipServiceSpy.getStarshipByID.and.returnValue(of(mockStarship));
 
     await TestBed.configureTestingModule({
@@ -66,25 +66,7 @@ describe('StarshipDetailsComponent', () => {
 
     fixture = TestBed.createComponent(StarshipDetailsComponent);
     component = fixture.componentInstance;
-    component.selectedShip = {
-      name: 'Death Star',
-      model: 'DS-1 Orbital Battle Station',
-      manufacturer: 'Imperial Department of Military Research, Sienar Fleet Systems',
-      cost_in_credits: '1000000000000',
-      length: '120000',
-      max_atmosphering_speed: 'n/a',
-      crew: '342,953',
-      passengers: '843,342',
-      cargo_capacity: '1000000000000',
-      consumables: '3 years',
-      hyperdrive_rating: '4.0',
-      starship_class: 'Deep Space Mobile Battlestation',
-      pilots: [],
-      films: ['https://swapi.dev/api/films/1/'],
-      next: 'string',
-      previous: 'string',
-      url: 'string',
-    };
+    component.selectedShip = mockStarship;
     starshipService = TestBed.inject(StarshipService) as jasmine.SpyObj<StarshipService>;
     router = TestBed.inject(Router);
     fixture.detectChanges();
@@ -97,16 +79,16 @@ describe('StarshipDetailsComponent', () => {
   it('should correctly display starship details', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.ship-title')?.textContent).toContain('Death Star');
-    expect(component.selectedShip?.model).toBe('DS-1 Orbital Battle Station');
-    expect(component.selectedShip?.manufacturer).toBe('Imperial Department of Military Research, Sienar Fleet Systems');
-    expect(component.selectedShip?.cargo_capacity).toBe('1000000000000');
-    expect(component.selectedShip?.crew).toBe('342,953');
-    expect(component.selectedShip?.passengers).toBe('843,342');
-    expect(component.selectedShip?.cost_in_credits).toBe('1000000000000');
-    expect(component.selectedShip?.length).toBe('120000');
-    expect(component.selectedShip?.max_atmosphering_speed).toBe('n/a');
-    expect(component.selectedShip?.hyperdrive_rating).toBe('4.0');
+    expect(compiled.querySelector('.ship-title')?.textContent.trim()).toBe('X-wing');
+    expect(component.selectedShip?.model).toBe('T-65 X-wing');
+    expect(component.selectedShip?.manufacturer).toBe('Incom Corporation');
+    expect(component.selectedShip?.cargo_capacity).toBe('110');
+    expect(component.selectedShip?.crew).toBe('1');
+    expect(component.selectedShip?.passengers).toBe('0');
+    expect(component.selectedShip?.cost_in_credits).toBe('149999');
+    expect(component.selectedShip?.length).toBe('12.5');
+    expect(component.selectedShip?.max_atmosphering_speed).toBe('1050');
+    expect(component.selectedShip?.hyperdrive_rating).toBe('1.0');
   });
 
   it('should navigate back when back button is clicked', () => {
